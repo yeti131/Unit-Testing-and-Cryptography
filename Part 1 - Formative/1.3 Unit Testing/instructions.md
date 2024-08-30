@@ -19,7 +19,7 @@ You will get a window at the bottom that displays the tests. Click the check ico
 
 ![test image](assets/test.png)
 
-Next, take a look at the files in the tests folder. Notice how all of the testing file start with 'test'.
+Next, take a look at the files in the tests folder. Notice how all of the testing files start with 'test'.
 Whenever you create tests for unit testing you should always start the name of the file with 'test' followed by the function or class you are testing.
 Inside ech of the files is a class that holds all of our test cases. Each test case is broken down into its own method within the class.
 Notice how the test cases are crafted. They are meant to test each of the functions from all different angles.
