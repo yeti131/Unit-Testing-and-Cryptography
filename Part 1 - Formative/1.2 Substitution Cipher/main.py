@@ -4,11 +4,21 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def sub_encode(text, codebet):
-    return ""
+    encoded_string = ""
+    for i in range(len(text)):
+        letter = text[i]
+        index = alpha.index(letter)
+        encoded_string += codebet[index]
+    return encoded_string
 
 
 def sub_decode(text, codebet):
-    return ""
+    decoded_string = ""
+    for i in range(len(text)):
+        letter = text[i]
+        index = codebet.index(letter)
+        decoded_string += alpha[index]
+    return decoded_string
 
 
 test = "HELLOWORLD"
