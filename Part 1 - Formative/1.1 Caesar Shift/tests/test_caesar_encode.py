@@ -4,7 +4,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from main import caesar_encode
-class MyTestCase(unittest.TestCase):
+class TestCaesarEncode(unittest.TestCase):
     def test_caesar_encode_shifted_two(self):
         self.assertEqual(caesar_encode("HELLOWORLD", 2), "JGNNQYQTNF")  # add assertion here
 
