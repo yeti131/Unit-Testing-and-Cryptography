@@ -18,6 +18,11 @@ class TestSubEncode(unittest.TestCase):
     def test_sub_encode_upper_case_text_lower_codebet(self):
         self.assertEqual(sub_encode("HELLOWORLD", "wjkuxvbmiydtplhzgoncrsaefq"), "MXTTHAHOTU")
 
-    def test_sub_encode_small_codebet(self):
-        self.assertEqual(sub_encode("HELLOWORLD", "wjkuxvbmiydtplhzgoncrs"), "HELLOWORLD") #idk about this
+    def test_sub_encode_punctuation(self):
+        self.assertEqual(sub_encode("HELLOWORLD!", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MXTTHAHOTU!")
 
+    def test_sub_encode_space(self):
+        self.assertEqual(sub_encode("HELLO WORLD", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MXTTH AHOTU")
+
+    def test_sub_encode_numbers(self):
+        self.assertEqual(sub_encode("HELLO123", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "MXTTH123")
