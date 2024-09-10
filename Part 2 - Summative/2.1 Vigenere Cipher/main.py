@@ -1,6 +1,6 @@
 # Read the instructions to see what you need to do here!
 
-alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 alpha_lower = alpha.lower()
 
 def vig_encode(text, keyword):
