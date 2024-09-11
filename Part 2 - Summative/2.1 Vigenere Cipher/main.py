@@ -4,8 +4,13 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 alpha_lower = alpha.lower()
 
 def vig_encode(text, keyword):
-    iterations = int((len(text) / len(keyword)) + 1)
-    key_string = (keyword * iterations).upper()
+    key_string = ""
+    for letter in keyword:
+        if letter in alpha or letter in alpha_lower:
+            key_string += letter
+    print(key_string)
+    iterations = int((len(text) / len(key_string)) + 1)
+    key_string = (key_string * iterations).upper()
     encoded_string = ""
     for i in range(len(text)):
         letter = text[i]
@@ -23,14 +28,17 @@ def vig_encode(text, keyword):
             encoded_string += alpha_lower[code_index]
         else:
             encoded_string += letter
-            continue
 
     return encoded_string
 
 
 def vig_decode(text, keyword):
-    iterations = int((len(text) / len(keyword)) + 1)
-    key_string = (keyword * iterations).upper()
+    key_string = ""
+    for letter in keyword:
+        if letter in alpha or letter in alpha_lower:
+            key_string += letter
+    iterations = int((len(text) / len(key_string)) + 1)
+    key_string = (key_string * iterations).upper()
     decoded_string = ""
     for i in range(len(text)):
         letter = text[i]
@@ -48,13 +56,12 @@ def vig_decode(text, keyword):
             decoded_string += alpha_lower[code_index]
         else:
             decoded_string += letter
-            continue
 
     return decoded_string
 
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
-vig_key = "TEST"
+vig_key = "TE$T"
 enc = vig_encode(test, vig_key)
 dec = vig_decode(enc, vig_key)
 print(enc)

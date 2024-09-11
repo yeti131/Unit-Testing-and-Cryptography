@@ -36,5 +36,5 @@ class TestVigEncode(unittest.TestCase):
         self.assertEqual(vig_encode("THEQUICKBROWNFOXJUMPED", "TE5T"), "LLXIYAVOUJSOFJGPNMETXW")
 
     def test_vig_encode_all(self):
-        self.assertEqual(vig_encode("AbCdEfG1! ", "T E5T$"), "TaGwXeK1!S")
+        self.assertEqual(vig_encode("AbCdEfG1! ", "T E5T$"), "TaGwXeK1!Z")
 
