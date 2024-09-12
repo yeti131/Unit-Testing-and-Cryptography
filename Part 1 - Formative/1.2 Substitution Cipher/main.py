@@ -5,6 +5,12 @@ alpha_lower = alpha.lower()
 
 
 def sub_encode(text, codebet):
+    """
+    Encodes text via a Substitution Cipher.
+    :param text: The text to be encoded.
+    :param codebet: The alphabet used to substitute characters. Should be 26 characters.
+    :return: Encoded text.
+    """
     codebet = codebet.upper()
     codebet_lower = codebet.lower()
     encoded_string = ""
@@ -22,6 +28,12 @@ def sub_encode(text, codebet):
 
 
 def sub_decode(text, codebet):
+    """
+    Decodes text via a Substitution Cipher.
+    :param text: The text to be decoded.
+    :param codebet: The alphabet used to substitute characters. Should be 26 characters.
+    :return: Decoded text.
+    """
     codebet = codebet.upper()
     codebet_lower = codebet.lower()
     decoded_string = ""

@@ -5,6 +5,12 @@ alpha_lower = "abcdefghijklmnopqrstuvwxyz"
 
 
 def caesar_encode(text, n):
+    """
+    Encodes text via a Caesar Cipher.
+    :param text: The text to be encoded.
+    :param n: The amount of characters shifted.
+    :return: Encoded text.
+    """
     try:
         n = int(n)
     except:
@@ -24,6 +30,12 @@ def caesar_encode(text, n):
 
 
 def caesar_decode(text, n):
+    """
+    Decodes text via a Caesar Cipher.
+    :param text: The text to be decoded.
+    :param n: The amount of characters shifted.
+    :return: Decoded text.
+    """
     try:
         n = int(n)
     except:
