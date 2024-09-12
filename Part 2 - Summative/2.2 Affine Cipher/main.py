@@ -105,6 +105,15 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    encoded = ""
+    iterations = len(text) // n
+    for i in range(iterations):
+        letter_set = text[i: i + n]
+        index_num = 0
+        for letter in letter_set:
+            index_num += alpha.index(letter)
+
+
     return ''
 
 def affine_n_decode(text, n, a, b):
