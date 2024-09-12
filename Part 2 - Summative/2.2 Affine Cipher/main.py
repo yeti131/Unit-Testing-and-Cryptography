@@ -20,6 +20,13 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
+    """
+    Encodes text via an Affine Cipher.
+    :param text: The text to be encoded.
+    :param a: Factor used to encode. Must be a modular inverse of b.
+    :param b: Factor used to encode. Must be a modular inverse of a.
+    :return: Encoded text.
+    """
     encoded = ""
     for letter in text:
         index = alpha.index(letter)
@@ -27,7 +34,15 @@ def affine_encode(text, a, b):
         encoded += alpha[(index + b) % 26]
     return encoded
 
+
 def affine_decode(text, a, b):
+    """
+    Decodes text via an Affine Cipher.
+    :param text: The text to be decoded.
+    :param a: Factor used to encode. Must be a modular inverse of b.
+    :param b: Factor used to encode. Must be a modular inverse of a.
+    :return: Decoded text.
+    """
     decoded = ""
     for letter in text:
         index = alpha.index(letter)
@@ -49,10 +64,32 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
-    return 0
+    """
+    Converts a ngram into a number.
+    :param ngram: ngram to be converted.
+    :return: Resultant number.
+    """
+    num = 0
+    count = 0
+    for letter in ngram:
+        num += 26 ** count * alpha.index(letter)
+        count += 1
+    return num
 
 def convert_to_text(num, n):
-    return ''
+    """
+    Converts num into ngram and returns it.
+    :param num: Number to convert.
+    :param n: Length of ngram to be converted.
+    :return: ngram string
+    """
+    text = ""
+    for i in range(n):
+        letter_num = num % 26
+        text += alpha[letter_num]
+        num //= 26
+
+    return text
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 l = len(test)
