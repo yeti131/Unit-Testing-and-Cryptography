@@ -105,24 +105,33 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    while len(text) % n != 0:
+        text += "X"
     encoded = ""
-    iterations = len(text) // n
-    for i in range(iterations):
-        letter_set = text[i: i + n]
-        index_num = 0
-        for letter in letter_set:
-            index_num += alpha.index(letter)
+    while len(text) != 0:
+        letter_set = text[0: 0 + n]
+        text = text[n:]
+        num = (a * convert_to_num(letter_set) + b) % (26 ** n)
+        encoded += convert_to_text(num, n)
 
-
-    return ''
+    return encoded
 
 def affine_n_decode(text, n, a, b):
-    return ''
+    while len(text) % n != 0:
+        text += "X"
+    decoded = ""
+    while len(text) != 0:
+        letter_set = text[0: 0 + n]
+        text = text[n:]
+        num = (b * convert_to_num(letter_set) + a) % (26 ** n)
+        decoded += convert_to_text(num, n)
 
-test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
-n = 5
-a = 347
-b = 1721
+    return decoded
+
+test = "COOL"
+n = 3
+a = 3
+b = 121
 enc = affine_n_encode(test, n, a, b)
 dec = affine_n_decode(enc, n, a, b)
 print(enc, dec)
