@@ -3,6 +3,7 @@ import math
 # Read the instructions to see what to do!
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alpha_lower = alpha.lower()
 
 # PART 1
 # These functions are provided for you!
@@ -44,9 +45,10 @@ def affine_decode(text, a, b):
     :return: Decoded text.
     """
     decoded = ""
+    mod_a = mod_inverse(a, 26)
     for letter in text:
         index = alpha.index(letter)
-        index = index * b % 26
+        index = index * mod_a % 26
         decoded += alpha[(index - a) % 26]
     return decoded
 
@@ -117,13 +119,12 @@ def affine_n_encode(text, n, a, b):
     return encoded
 
 def affine_n_decode(text, n, a, b):
-    while len(text) % n != 0:
-        text += "X"
     decoded = ""
+    mod_a = mod_inverse(a, 26 ** n)
     while len(text) != 0:
         letter_set = text[0: 0 + n]
         text = text[n:]
-        num = (b * convert_to_num(letter_set) + a) % (26 ** n)
+        num = (mod_a * convert_to_num(letter_set)) % (26 ** n)
         decoded += convert_to_text(num, n)
 
     return decoded
