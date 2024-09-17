@@ -93,7 +93,7 @@ def convert_to_text(num, n):
 
     return text
 
-test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
+test = "BARK"
 l = len(test)
 num = convert_to_num(test)
 answer = convert_to_text(num, l)
@@ -124,10 +124,11 @@ def affine_n_decode(text, n, a, b):
     while len(text) != 0:
         letter_set = text[0: 0 + n]
         text = text[n:]
-        num = (mod_a * convert_to_num(letter_set)) % (26 ** n)
+        num = (mod_a * (convert_to_num(letter_set) - b)) % (26 ** n)
         decoded += convert_to_text(num, n)
 
     return decoded
+
 
 test = "COOL"
 n = 3
