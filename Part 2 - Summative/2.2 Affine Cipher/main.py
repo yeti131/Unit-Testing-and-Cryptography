@@ -28,8 +28,11 @@ def affine_encode(text, a, b):
     :param b: Factor used to encode. Must be a modular inverse of a.
     :return: Encoded text.
     """
+    text = text.upper()
     encoded = ""
     for letter in text:
+        if letter not in alpha:
+            continue
         index = alpha.index(letter)
         index = index * a % 26
         encoded += alpha[(index + b) % 26]
@@ -44,12 +47,15 @@ def affine_decode(text, a, b):
     :param b: Factor used to encode. Must be a modular inverse of a.
     :return: Decoded text.
     """
+    text = text.upper()
     decoded = ""
     mod_a = mod_inverse(a, 26)
     for letter in text:
+        if letter not in alpha:
+            continue
         index = alpha.index(letter)
-        index = index * mod_a % 26
-        decoded += alpha[(index - a) % 26]
+        index = (index - b) * mod_a % 26
+        decoded += alpha[index]
     return decoded
 
 test = "HELLOWORLD"
@@ -107,8 +113,14 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    new_text = ""
+    for i in range(len(text)):
+        if text[i] in alpha:
+            new_text += test[i]
+    text = new_text
     while len(text) % n != 0:
         text += "X"
+
     encoded = ""
     while len(text) != 0:
         letter_set = text[0: 0 + n]
