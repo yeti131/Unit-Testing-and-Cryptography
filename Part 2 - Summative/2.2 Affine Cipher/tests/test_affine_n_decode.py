@@ -18,7 +18,7 @@ class TestAffineDecode(unittest.TestCase):
         self.assertEqual(affine_n_decode("XU HN", 2, 3, 121), "COOL")
 
     def test_affine_n_encode_space_off_n(self):
-        self.assertEqual(affine_n_decode("X UHN", 23, 3, 121), "COOL")
+        self.assertEqual(affine_n_decode("X UHN", 2, 3, 121), "COOL")
 
     def test_affine_n_encode_special_chars(self):
         self.assertEqual(affine_n_decode("XUHN$", 2, 3, 121), "COOL")
