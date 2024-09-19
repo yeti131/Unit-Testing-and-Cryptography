@@ -113,10 +113,11 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    text = text.upper()
     new_text = ""
     for i in range(len(text)):
         if text[i] in alpha:
-            new_text += test[i]
+            new_text += text[i]
     text = new_text
     while len(text) % n != 0:
         text += "X"
@@ -131,6 +132,14 @@ def affine_n_encode(text, n, a, b):
     return encoded
 
 def affine_n_decode(text, n, a, b):
+    text = text.upper()
+    new_text = ""
+    for i in range(len(text)):
+        if text[i] in alpha:
+            new_text += text[i]
+    text = new_text
+    while len(text) % n != 0:
+        text += "X"
     decoded = ""
     mod_a = mod_inverse(a, 26 ** n)
     while len(text) != 0:
