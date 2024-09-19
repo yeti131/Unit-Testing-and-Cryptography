@@ -24,8 +24,8 @@ def affine_encode(text, a, b):
     """
     Encodes text via an Affine Cipher.
     :param text: The text to be encoded.
-    :param a: Factor used to encode. Must be a modular inverse of b.
-    :param b: Factor used to encode. Must be a modular inverse of a.
+    :param a: Factor used to encode.
+    :param b: Length of Caesar shift.
     :return: Encoded text.
     """
     text = text.upper()
@@ -43,8 +43,8 @@ def affine_decode(text, a, b):
     """
     Decodes text via an Affine Cipher.
     :param text: The text to be decoded.
-    :param a: Factor used to encode. Must be a modular inverse of b.
-    :param b: Factor used to encode. Must be a modular inverse of a.
+    :param a: Factor used to encode.
+    :param b: Length of Caesar shift.
     :return: Decoded text.
     """
     text = text.upper()
@@ -113,6 +113,14 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    """
+    Encodes text via an Affine Cipher.
+    :param text: The text to be encoded.
+    :param n: The length of ngram to be encoded.
+    :param a: Factor used to encode.
+    :param b: Length of Caesar shift.
+    :return: Encoded text.
+    """
     text = text.upper()
     new_text = ""
     for i in range(len(text)):
@@ -132,6 +140,14 @@ def affine_n_encode(text, n, a, b):
     return encoded
 
 def affine_n_decode(text, n, a, b):
+    """
+    Decodes text via an Affine Cipher.
+    :param text: The text to be decoded.
+    :param n: The length of ngram to be encoded.
+    :param a: Factor used to encode.
+    :param b: Length of Caesar shift.
+    :return: Decoded text.
+    """
     text = text.upper()
     new_text = ""
     for i in range(len(text)):
