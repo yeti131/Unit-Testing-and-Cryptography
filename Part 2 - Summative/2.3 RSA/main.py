@@ -27,33 +27,50 @@ def convert_to_num(ngram):
         count += 1
     return num
 
+def convert_to_text(num, n):
+    """
+    Converts num into ngram and returns it.
+    :param num: Number to convert.
+    :param n: Length of ngram to be converted.
+    :return: ngram string
+    """
+    text = ""
+    for i in range(n):
+        letter_num = num % 26
+        text += alpha[letter_num]
+        num //= 26
+
+    return text
+
 # Also write these:
 
 def rsa_encode(text, m, e):
     num = convert_to_num(text)
-    assert num < m
-    return 0
+    assert num < m, "Text is too long."
+    return pow(num, e, m)
 
 
 def rsa_decode(num, m, d, l):
-    return ""
+    num = pow(num, d, m)
+    decoded = convert_to_text(num, l)
+    return decoded
 
 
 def get_d(p, q, e):
     t = (p - 1) * (q - 1)
     return mod_inverse(e, t)
 
-# text = "THEFIVEBOXINGWIZARDSJUMPQUICKLY"
-# l = len(text)
-# p = 292361466231755597564095925310764764819
-# q = 307125506157764866722739041634199200019
-# e = 65537
-# m = p * q
-# d = get_d(p, q, e)
-# enc = rsa_encode(text, m, e)
-# dec = rsa_decode(enc, m, d, l)
-# print(enc)
-# print(dec)
+text = "THEFIVEBOXINGWIZARDSJUMPQUICKLY"
+l = len(text)
+p = 292361466231755597564095925310764764819
+q = 307125506157764866722739041634199200019
+e = 65537
+m = p * q
+d = get_d(p, q, e)
+enc = rsa_encode(text, m, e)
+dec = rsa_decode(enc, m, d, l)
+print(enc)
+print(dec)
 # If this works, dec should be the same as text!
 print(get_d(2003, 2503, 17))
 
@@ -68,46 +85,3 @@ def make_prime(n):
   temp = randint(lower, upper)
   return nextprime(temp)
 
-
-
-
-'''import math
-
-# Copy and paste any functions you need from the Affine assignment!
-
-# Also write these:
-def rsa_encode(text, m, e):
-  return 0
-
-def rsa_decode(num, m, d, l):
-  return ""
-
-def get_d(p, q, e):
-  return 0
-
-text = "THEFIVEBOXINGWIZARDSJUMPQUICKLY"
-l = len(text)
-p = 292361466231755597564095925310764764819
-q = 307125506157764866722739041634199200019
-e = 65537
-m = p * q
-d = get_d(p, q, e)
-enc = rsa_encode(text, m, e)
-dec = rsa_decode(enc, m, d, l)
-print(enc)
-print(dec)
-# If this works, dec should be the same as text!
-
-
-# Part 2: Generate your own key!
-
-from sympy import nextprime
-from random import randint
-
-def make_prime(n):
-  lower = 2 ** (n - 1) + 1
-  upper = 2 ** n - 1
-  temp = randint(lower, upper)
-  return nextprime(temp)
-
-'''
