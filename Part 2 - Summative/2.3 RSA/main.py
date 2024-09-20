@@ -45,18 +45,40 @@ def convert_to_text(num, n):
 # Also write these:
 
 def rsa_encode(text, m, e):
+    """
+    Encodes text into RSA.
+    :param text: Text to encode
+    :param m: The modulus factor of the RSA
+    :param e: e used to encode
+    :return: Encoded text.
+    """
     num = convert_to_num(text)
     assert num < m, "Text is too long."
     return pow(num, e, m)
 
 
 def rsa_decode(num, m, d, l):
+    """
+    Decodes RSA.
+    :param num: Number to decode
+    :param m: The modulus factor of the RSA
+    :param d: The exponent used to decode
+    :param l: The length of the resultant string
+    :return: Decoded text.
+    """
     num = pow(num, d, m)
     decoded = convert_to_text(num, l)
     return decoded
 
 
 def get_d(p, q, e):
+    """
+    Finds the totient and uses it to find d.
+    :param p: Prime number used to find t.
+    :param q: Prime number used to find d.
+    :param e: e used to encode.
+    :return: d
+    """
     t = (p - 1) * (q - 1)
     return mod_inverse(e, t)
 
@@ -72,7 +94,6 @@ dec = rsa_decode(enc, m, d, l)
 print(enc)
 print(dec)
 # If this works, dec should be the same as text!
-print(get_d(2003, 2503, 17))
 
 # Part 2: Generate your own key!
 
